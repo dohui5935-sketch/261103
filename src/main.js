@@ -1,60 +1,85 @@
 import './style.css'
-import heroImg from './assets/hero.png'
-import javascriptLogo from './assets/javascript.svg'
-import viteLogo from './assets/vite.svg'
-import { setupCounter } from './counter.js'
 
-document.querySelector('#app').innerHTML = `
-<section id="center">
-  <div class="hero">
-    <img src="${heroImg}" class="base" width="170" height="179">
-    <img src="${javascriptLogo}" class="framework" alt="JavaScript logo"/>
-    <img src="${viteLogo}" class="vite" alt="Vite logo" />
-  </div>
-  <div>
-    <h1>Get started</h1>
-    <p>Edit <code>src/main.js</code> and save to test <code>HMR</code></p>
-  </div>
-  <button id="counter" type="button" class="counter"></button>
-</section>
+// 콘텐츠는 루트 index.html에서 수정합니다. 이 파일은 상호작용만 담당합니다.
+const menuToggle = document.querySelector('.menu-toggle')
+const navigation = document.querySelector('.site-nav')
+const header = document.querySelector('.site-header')
+const mobileViewport = window.matchMedia('(max-width: 760px)')
 
-<div class="ticks"></div>
+function setMenuOpen(isOpen) {
+  menuToggle.setAttribute('aria-expanded', String(isOpen))
+  menuToggle.setAttribute('aria-label', isOpen ? '메뉴 닫기' : '메뉴 열기')
+  navigation.classList.toggle('is-open', isOpen)
+}
 
-<section id="next-steps">
-  <div id="docs">
-    <svg class="icon" role="presentation" aria-hidden="true"><use href="/icons.svg#documentation-icon"></use></svg>
-    <h2>Documentation</h2>
-    <p>Your questions, answered</p>
-    <ul>
-      <li>
-        <a href="https://vite.dev/" target="_blank">
-          <img class="logo" src="${viteLogo}" alt="" />
-          Explore Vite
-        </a>
-      </li>
-      <li>
-        <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-          <img class="button-icon" src="${javascriptLogo}" alt="">
-          Learn more
-        </a>
-      </li>
-    </ul>
-  </div>
-  <div id="social">
-    <svg class="icon" role="presentation" aria-hidden="true"><use href="/icons.svg#social-icon"></use></svg>
-    <h2>Connect with us</h2>
-    <p>Join the Vite community</p>
-    <ul>
-      <li><a href="https://github.com/vitejs/vite" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#github-icon"></use></svg>GitHub</a></li>
-      <li><a href="https://chat.vite.dev/" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#discord-icon"></use></svg>Discord</a></li>
-      <li><a href="https://x.com/vite_js" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#x-icon"></use></svg>X.com</a></li>
-      <li><a href="https://bsky.app/profile/vite.dev" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#bluesky-icon"></use></svg>Bluesky</a></li>
-    </ul>
-  </div>
-</section>
+menuToggle.addEventListener('click', () => {
+  setMenuOpen(menuToggle.getAttribute('aria-expanded') !== 'true')
+})
+navigation.addEventListener('click', (event) => {
+  if (event.target.closest('a')) setMenuOpen(false)
+})
+document.addEventListener('click', (event) => {
+  if (!header.contains(event.target)) setMenuOpen(false)
+})
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && menuToggle.getAttribute('aria-expanded') === 'true') {
+    setMenuOpen(false)
+    menuToggle.focus()
+  }
+})
+mobileViewport.addEventListener('change', () => setMenuOpen(false))
 
-<div class="ticks"></div>
-<section id="spacer"></section>
-`
+// JavaScript 또는 IntersectionObserver가 없어도 본문은 기본으로 표시됩니다.
+const revealElements = document.querySelectorAll('.reveal')
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
+if ('IntersectionObserver' in window && !reducedMotion.matches) {
+  const revealObserver = new IntersectionObserver((entries) => {
+    for (const entry of entries) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible')
+        revealObserver.unobserve(entry.target)
+      }
+    }
+  }, { threshold: 0.1 })
+  revealElements.forEach((element) => {
+    element.classList.add('will-reveal')
+    revealObserver.observe(element)
+  })
+  reducedMotion.addEventListener('change', (event) => {
+    if (event.matches) {
+      revealElements.forEach((element) => element.classList.add('is-visible'))
+      revealObserver.disconnect()
+    }
+  })
+}
 
-setupCounter(document.querySelector('#counter'))
+// 현재 읽고 있는 영역을 메뉴에서도 표시합니다.
+if ('IntersectionObserver' in window) {
+  const sectionObserver = new IntersectionObserver((entries) => {
+    for (const entry of entries) {
+      if (entry.isIntersecting) {
+        navigation.querySelectorAll('a').forEach((link) => {
+          if (link.hash === `#${entry.target.id}`) link.setAttribute('aria-current', 'location')
+          else link.removeAttribute('aria-current')
+        })
+      }
+    }
+  }, { rootMargin: '-15% 0px -65% 0px', threshold: 0 })
+  document.querySelectorAll('.section-anchor').forEach((section) => sectionObserver.observe(section))
+}
+
+// 실제 링크가 등록되기 전에는 준비 중 안내를 표시합니다.
+const placeholderDialog = document.querySelector('.placeholder-dialog')
+const placeholderDescription = document.querySelector('#placeholder-description')
+document.querySelectorAll('[data-placeholder-title]').forEach((button) => {
+  button.addEventListener('click', () => {
+    const subject = button.dataset.placeholderTitle
+    placeholderDescription.textContent = `${subject} 정보가 아직 등록되지 않았습니다. 내용이 준비되면 이곳에서 만나실 수 있어요.`
+    placeholderDialog.showModal()
+  })
+})
+document.querySelector('.dialog-close').addEventListener('click', () => placeholderDialog.close())
+placeholderDialog.addEventListener('click', (event) => {
+  const bounds = placeholderDialog.getBoundingClientRect()
+  if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) placeholderDialog.close()
+})

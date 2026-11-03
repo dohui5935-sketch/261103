@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="560" viewBox="0 0 600 560" fill="none">
+  <defs>
+    <linearGradient id="yellow" x1="158" y1="111" x2="440" y2="440" gradientUnits="userSpaceOnUse"><stop stop-color="#F8E8AB"/><stop offset="1" stop-color="#F1D99A"/></linearGradient>
+    <linearGradient id="paper" x1="178" y1="122" x2="391" y2="431" gradientUnits="userSpaceOnUse"><stop stop-color="#FFFEF7"/><stop offset="1" stop-color="#F8F3E7"/></linearGradient>
+    <linearGradient id="pink" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#F4CEC3"/><stop offset="1" stop-color="#DDA99A"/></linearGradient>
+    <linearGradient id="blue" x1="388" y1="256" x2="490" y2="395" gradientUnits="userSpaceOnUse"><stop stop-color="#C3DDE8"/><stop offset="1" stop-color="#96B6C8"/></linearGradient>
+    <linearGradient id="pencil" x1="0" y1="0" x2="25" y2="0" gradientUnits="userSpaceOnUse"><stop stop-color="#DBAD9C"/><stop offset=".45" stop-color="#F7D3C4"/><stop offset=".52" stop-color="#EBC2B0"/><stop offset="1" stop-color="#C99687"/></linearGradient>
+    <pattern id="grid" width="23" height="23" patternUnits="userSpaceOnUse"><path d="M23 0H0V23" stroke="#DCE3D6" stroke-width=".7"/></pattern>
+    <filter id="shadow" x="-35%" y="-25%" width="180%" height="180%"><feDropShadow dx="9" dy="18" stdDeviation="14" flood-color="#8F7A56" flood-opacity=".13"/></filter>
+    <filter id="smallShadow" x="-40%" y="-40%" width="200%" height="220%"><feDropShadow dx="4" dy="10" stdDeviation="6" flood-color="#806B4D" flood-opacity=".15"/></filter>
+  </defs>
+  <circle cx="310" cy="276" r="173" fill="url(#yellow)" opacity=".7"/>
+  <circle cx="473" cy="137" r="26" fill="#EBD5CC"/>
+  <circle cx="142" cy="410" r="14" fill="#CFDAC0"/>
+  <circle cx="492" cy="414" r="6" fill="#C1CDB3"/>
+  <path d="M104 284c-24-30-49 9-23 14s-6-38-21-15" stroke="#C0CBB1" stroke-width="4" stroke-linecap="round"/>
+  <path d="m475 217 10-17m4 21 16-5m-34-9-2-16" stroke="#C8AD76" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="m101 157 5 12 13 1-11 8 1 13-10-8-12 4 5-12-8-10 13 1Z" fill="#D2B576"/>
+  <path d="m442 455 4 8 9 1-7 6 2 9-8-5-8 4 3-9-6-7 9 1Z" fill="#D7AD9A"/>
+  <g transform="rotate(-9 285 276)" filter="url(#shadow)">
+    <rect x="153" y="124" width="258" height="316" rx="9" fill="#DBD5C7"/>
+    <rect x="150" y="118" width="258" height="316" rx="9" fill="url(#paper)" stroke="#FFFDF6" stroke-width="2"/>
+    <path d="M164 139h230v277H164Z" fill="url(#grid)"/>
+    <rect x="233" y="102" width="92" height="31" rx="2" fill="#C0CBA4" fill-opacity=".7" transform="rotate(4 279 117)"/>
+    <path d="M180 171h56M180 179h39" stroke="#A8B39C" stroke-width="2" stroke-linecap="round"/>
+    <text x="181" y="215" fill="#737F69" font-family="Georgia, serif" font-size="18" font-style="italic">ideas take shape.</text>
+    <path d="M192 355V251m-6 8 6-8 6 8M186 351h134m-8-6 8 6-8 6" stroke="#A8B1A0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M201 337c24-5 29-50 52-45s27 28 57-20" stroke="#C18B77" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="252" cy="292" r="4" fill="#FFFDF6" stroke="#C18B77" stroke-width="2"/>
+    <circle cx="309" cy="273" r="4" fill="#FFFDF6" stroke="#C18B77" stroke-width="2"/>
+    <text x="324" y="356" fill="#839177" font-family="Georgia, serif" font-size="12" font-style="italic">x</text>
+    <text x="189" y="242" fill="#839177" font-family="Georgia, serif" font-size="12" font-style="italic">y</text>
+    <text x="181" y="392" fill="#9A9D8A" font-family="Georgia, serif" font-size="17" font-style="italic">possibility = curiosity²</text>
+  </g>
+  <g transform="rotate(16 396 352)" filter="url(#smallShadow)">
+    <path d="m343 307 66-37 70 39-67 39Z" fill="#D3E4E9"/>
+    <path d="m343 307 69 41v81l-69-41Z" fill="#9EBFCF"/>
+    <path d="m412 348 67-39v80l-67 40Z" fill="url(#blue)"/>
+    <path d="m344 308 68 40 66-38M412 348v80" stroke="#E3EFF0" stroke-width="1.3"/>
+    <path d="m359 324 36 21m-36-9 21 12" stroke="#C5DAE1" stroke-width="2" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(118 213) rotate(29)" filter="url(#smallShadow)">
+    <path d="M0 0h35v196H0Z" fill="#D4C5DA"/>
+    <path d="M27 0h8v196h-8Z" fill="#BBA8C3"/>
+    <path d="M0 0h35v8H0Z" fill="#E5DCE9"/>
+    <path d="M0 20h12M0 32h7M0 44h7M0 56h12M0 68h7M0 80h7M0 92h12M0 104h7M0 116h7M0 128h12M0 140h7M0 152h7M0 164h12M0 176h7" stroke="#9F8BA8" stroke-width="1.5"/>
+    <circle cx="17" cy="185" r="4" fill="#F8F5EE"/>
+  </g>
+  <g transform="translate(419 108) rotate(36)" filter="url(#smallShadow)">
+    <rect x="0" y="0" width="25" height="37" rx="6" fill="#CAD8BF"/>
+    <path d="M0 28h25v15H0Z" fill="#C2C5B7"/><path d="M0 32h25M0 38h25" stroke="#E6E7DD" stroke-width="1.5"/>
+    <path d="M0 43h25v148H0Z" fill="url(#pencil)"/>
+    <path d="m0 191 12.5 37L25 191Z" fill="#E3C59C"/>
+    <path d="m9 218 3.5 10 3.5-10Z" fill="#62665A"/>
+    <path d="M5 52v128" stroke="#FFE1CE" stroke-width="2" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(299 82) rotate(-21)" filter="url(#smallShadow)">
+    <path d="M-16-5c2-19 28-26 37-9L8-3l10 12 14-11c12 26-20 43-35 25l-50 47a11 11 0 0 1-15-16l50-46Z" fill="#D5AD8D"/>
+    <path d="M-14-6c3-14 25-19 32-7L5-2l12 14L31 1c5 22-22 33-35 16l-51 47a7 7 0 0 1-10-10L-13 7Z" fill="#E8C7A5"/>
+    <circle cx="-57" cy="58" r="4" fill="#F8F5EE"/>
+  </g>
+  <g transform="translate(240 433) rotate(-12)" filter="url(#smallShadow)">
+    <path d="M0-20C-15-48-42-22-20 0-49 16-22 42 0 20 16 49 43 22 20 0 49-16 22-43 0-20Z" fill="url(#pink)"/>
+    <circle r="10" fill="#F8E8B1"/>
+    <circle cx="-3" cy="-2" r="2" fill="#CDAF74"/>
+  </g>
+  <path d="M472 90v17m-8-8h16" stroke="#9BAE8C" stroke-width="2" stroke-linecap="round"/>
+  <text x="83" y="364" fill="#A99982" font-family="Georgia, serif" font-style="italic" font-size="23" transform="rotate(-14 83 364)">a + b</text>
+  <path d="M506 295c8-2 10-10 16-12m-10 19c7 0 13-6 19-4" stroke="#C7B4C2" stroke-width="2.5" stroke-linecap="round"/>
+</svg>
